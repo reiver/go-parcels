@@ -50,3 +50,9 @@ func (parcel *internalStringParcel) Runes() []rune {
 func (parcel *internalStringParcel) String() string {
 	return parcel.content
 }
+
+
+func (parcel *internalStringParcel) Map(fn func(Parcel)Parcel) Parcel {
+        return fn(parcel)
+}
+

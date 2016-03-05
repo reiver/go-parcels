@@ -3,6 +3,7 @@ package parcels
 
 import (
 	"io/ioutil"
+	"strings"
 
 	"testing"
 )
@@ -98,6 +99,81 @@ func TestFromBytes(t *testing.T) {
 		if expected, actual := test.String, string(actualReaderBytes); expected != actual {
 			t.Errorf("For test #%d, expected %q, but actually got %q.", testNumber, expected, actual)
 			continue
+		}
+	}
+}
+
+
+func TestByteParcelMap(t *testing.T) {
+
+
+	tests := []struct{
+		String string
+		Mappings []struct {
+			Func func(Parcel)Parcel
+			Expected string
+		}
+	}{
+		{
+			String: "AbCdE",
+			Mappings: []struct{
+				Func func(Parcel)Parcel
+				Expected string
+			}{
+				{
+					Func: func(parcel Parcel) Parcel {
+						s := strings.ToUpper(parcel.String())
+						return FromString(s)
+					},
+					Expected: "ABCDE",
+				},
+				{
+					Func: func(parcel Parcel) Parcel {
+						s := strings.ToLower(parcel.String())
+						return FromString(s)
+					},
+					Expected: "abcde",
+				},
+			},
+		},
+
+
+
+		{
+			String: "Apple Banana Cherry",
+			Mappings: []struct{
+				Func func(Parcel)Parcel
+				Expected string
+			}{
+				{
+					Func: func(parcel Parcel) Parcel {
+						s := strings.ToUpper(parcel.String())
+						return FromString(s)
+					},
+					Expected: "APPLE BANANA CHERRY",
+				},
+				{
+					Func: func(parcel Parcel) Parcel {
+						s := strings.ToLower(parcel.String())
+						return FromString(s)
+					},
+					Expected: "apple banana cherry",
+				},
+			},
+		},
+	}
+
+
+	for testNumber, test := range tests {
+
+		parcel := FromBytes(  []byte(test.String)  )
+
+		for mappingNumber, mapping := range test.Mappings {
+
+			if expected, actual := mapping.Expected, mapping.Func(parcel).String(); expected != actual {
+				t.Errorf("For test #%d and mapping #%d, expected %q, but actually got %q.", testNumber, mappingNumber, expected, actual)
+				continue
+			}
 		}
 	}
 }

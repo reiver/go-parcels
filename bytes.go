@@ -54,3 +54,8 @@ func (parcel *internalBytesParcel) Runes() []rune {
 func (parcel *internalBytesParcel) String() string {
 	return string(parcel.content)
 }
+
+
+func (parcel *internalBytesParcel) Map(fn func(Parcel)Parcel) Parcel {
+	return fn(parcel)
+}

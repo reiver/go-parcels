@@ -11,4 +11,7 @@ type Parcel interface {
 	Reader() io.Reader
 	Runes() []rune
 	String() string
+
+	Map(func(Parcel)Parcel) Parcel
 }
+
