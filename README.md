@@ -11,7 +11,7 @@ Online documentation, which includes examples, can be found at: http://godoc.org
 [![GoDoc](https://godoc.org/github.com/reiver/go-parcels?status.svg)](https://godoc.org/github.com/reiver/go-parcels)
 
 
-## Example
+## Example #1
 ```
 import (
 	"github.com/reiver/go-parcels"
@@ -20,6 +20,23 @@ import (
 // ...
 
 parcel := parcels.FromString("This is some content!")
+
+asBytes  := parcel.Bytes()
+asReader := parcel.Reader()
+asRunes  := parcel.Runes()
+asString := parcel.String()
+```
+
+
+## Example 2
+```
+import (
+	"github.com/reiver/go-parcels"
+)
+
+// ...
+
+parcel := parcels.FromBytes( []byte{72, 69, 76, 76, 79} )
 
 asBytes  := parcel.Bytes()
 asReader := parcel.Reader()
