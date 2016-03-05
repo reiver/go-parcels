@@ -52,7 +52,7 @@ func (parcel *internalStringParcel) String() string {
 }
 
 
-func (parcel *internalStringParcel) Map(fn func(Parcel)Parcel) Parcel {
+func (parcel *internalStringParcel) Then(fn func(Parcel)Parcel) Parcel {
         return fn(parcel)
 }
 

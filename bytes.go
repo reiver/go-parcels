@@ -56,6 +56,6 @@ func (parcel *internalBytesParcel) String() string {
 }
 
 
-func (parcel *internalBytesParcel) Map(fn func(Parcel)Parcel) Parcel {
+func (parcel *internalBytesParcel) Then(fn func(Parcel)Parcel) Parcel {
 	return fn(parcel)
 }

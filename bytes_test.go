@@ -104,19 +104,19 @@ func TestFromBytes(t *testing.T) {
 }
 
 
-func TestByteParcelMap(t *testing.T) {
+func TestByteParcelThen(t *testing.T) {
 
 
 	tests := []struct{
 		String string
-		Mappings []struct {
+		Thens []struct {
 			Func func(Parcel)Parcel
 			Expected string
 		}
 	}{
 		{
 			String: "AbCdE",
-			Mappings: []struct{
+			Thens: []struct{
 				Func func(Parcel)Parcel
 				Expected string
 			}{
@@ -141,7 +141,7 @@ func TestByteParcelMap(t *testing.T) {
 
 		{
 			String: "Apple Banana Cherry",
-			Mappings: []struct{
+			Thens: []struct{
 				Func func(Parcel)Parcel
 				Expected string
 			}{
@@ -168,10 +168,10 @@ func TestByteParcelMap(t *testing.T) {
 
 		parcel := FromBytes(  []byte(test.String)  )
 
-		for mappingNumber, mapping := range test.Mappings {
+		for thenNumber, then := range test.Thens {
 
-			if expected, actual := mapping.Expected, mapping.Func(parcel).String(); expected != actual {
-				t.Errorf("For test #%d and mapping #%d, expected %q, but actually got %q.", testNumber, mappingNumber, expected, actual)
+			if expected, actual := then.Expected, parcel.Then(then.Func).String(); expected != actual {
+				t.Errorf("For test #%d and then #%d, expected %q, but actually got %q.", testNumber, thenNumber, expected, actual)
 				continue
 			}
 		}

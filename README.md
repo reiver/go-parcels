@@ -55,7 +55,7 @@ import (
 
 parcel := parcels.FromString("This is some content!")
 
-newParcel := parcel.Map(func(parcel Parcel)Parcel{
+newParcel := parcel.Then(func(parcel Parcel)Parcel{
 	s := strings.ToUpper(parcel.String)
 	return FromString(s)
 })
@@ -72,7 +72,7 @@ import (
 
 parcel := parcels.FromBytes( []byte{72, 69, 76, 76, 79} )
 
-newParcel := parcel.Map(func(parcel Parcel)Parcel{
+newParcel := parcel.Then(func(parcel Parcel)Parcel{
 	s := strings.ToUpper(parcel.String)
 	return FromString(s)
 })

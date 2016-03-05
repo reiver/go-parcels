@@ -12,6 +12,6 @@ type Parcel interface {
 	Runes() []rune
 	String() string
 
-	Map(func(Parcel)Parcel) Parcel
+	Then(func(Parcel)Parcel) Parcel
 }
 
