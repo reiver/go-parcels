@@ -9,7 +9,7 @@ import (
 )
 
 
-func TestFromString(t *testing.T) {
+func TestParcelFromString(t *testing.T) {
 
 	tests := []struct{
 		String string
@@ -70,7 +70,7 @@ func TestFromString(t *testing.T) {
 
 	for testNumber, test := range tests {
 
-		parcel := FromString(test.String)
+		parcel := ParcelFromString(test.String)
 
 
 		if expected, actual := test.String, parcel.String(); expected != actual {
@@ -123,14 +123,14 @@ func TestStringParcelThen(t *testing.T) {
 				{
 					Func: func(parcel Parcel) Parcel {
 						s := strings.ToUpper(parcel.String())
-						return FromString(s)
+						return ParcelFromString(s)
 					},
 					Expected: "ABCDE",
 				},
 				{
 					Func: func(parcel Parcel) Parcel {
 						s := strings.ToLower(parcel.String())
-						return FromString(s)
+						return ParcelFromString(s)
 					},
 					Expected: "abcde",
 				},
@@ -148,14 +148,14 @@ func TestStringParcelThen(t *testing.T) {
 				{
 					Func: func(parcel Parcel) Parcel {
 						s := strings.ToUpper(parcel.String())
-						return FromString(s)
+						return ParcelFromString(s)
 					},
 					Expected: "APPLE BANANA CHERRY",
 				},
 				{
 					Func: func(parcel Parcel) Parcel {
 						s := strings.ToLower(parcel.String())
-						return FromString(s)
+						return ParcelFromString(s)
 					},
 					Expected: "apple banana cherry",
 				},
@@ -166,7 +166,7 @@ func TestStringParcelThen(t *testing.T) {
 
 	for testNumber, test := range tests {
 
-		parcel := FromString(test.String)
+		parcel := ParcelFromString(test.String)
 
 		for thenNumber, then := range test.Thens {
 

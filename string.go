@@ -12,17 +12,17 @@ type internalStringParcel struct {
 }
 
 
-// FromString returns a new Parcel whose contents is the value of the string.
+// ParcelFromString returns a new Parcel whose contents is the value of the string.
 //
 // Example
 //
-//	parcel := parcels.FromString("This is some text.")
+//	parcel := parcels.ParcelFromString("This is some text.")
 //	
 //	asBytes  := parcel.Bytes()
 //	asReader := parcel.Reader()
 //	asRunes  := parcel.Runes()
 //	asString := parcel.String()
-func FromString(content string) Parcel {
+func ParcelFromString(content string) Parcel {
 
 	parcel := internalStringParcel{
 		content:content,

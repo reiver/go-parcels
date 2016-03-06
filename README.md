@@ -19,7 +19,7 @@ import (
 
 // ...
 
-parcel := parcels.FromString("This is some content!")
+parcel := parcels.ParcelFromString("This is some content!")
 
 asBytes  := parcel.Bytes()
 asReader := parcel.Reader()
@@ -36,7 +36,7 @@ import (
 
 // ...
 
-parcel := parcels.FromBytes( []byte{72, 69, 76, 76, 79} )
+parcel := parcels.ParcelFromBytes( []byte{72, 69, 76, 76, 79} )
 
 asBytes  := parcel.Bytes()
 asReader := parcel.Reader()
@@ -53,11 +53,11 @@ import (
 
 // ...
 
-parcel := parcels.FromString("This is some content!")
+parcel := parcels.ParcelFromString("This is some content!")
 
 newParcel := parcel.Then(func(parcel Parcel)Parcel{
 	s := strings.ToUpper(parcel.String)
-	return FromString(s)
+	return parcels.ParcelFromString(s)
 })
 ```
 
@@ -70,10 +70,10 @@ import (
 
 // ...
 
-parcel := parcels.FromBytes( []byte{72, 69, 76, 76, 79} )
+parcel := parcels.ParcelFromBytes( []byte{72, 69, 76, 76, 79} )
 
 newParcel := parcel.Then(func(parcel Parcel)Parcel{
 	s := strings.ToUpper(parcel.String)
-	return FromString(s)
+	return parcels.ParcelFromString(s)
 })
 ```

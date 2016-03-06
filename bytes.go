@@ -12,19 +12,19 @@ type internalBytesParcel struct {
 }
 
 
-// FromBytes returns a new Parcel whose contents is the value of the []byte.
+// ParcelFromBytes returns a new Parcel whose contents is the value of the []byte.
 // Note that the contents the input []byte 'b' is copied, and the new Parcel
 // is not attached to the original backing memory.
 //
 // Example
 //
-//      parcel := parcels.FromBytes( []byte{72, 69, 76, 76, 79} )
+//      parcel := parcels.ParcelFromBytes( []byte{72, 69, 76, 76, 79} )
 //      
 //      asBytes  := parcel.Bytes()
 //      asReader := parcel.Reader()
 //      asRunes  := parcel.Runes()
 //      asString := parcel.String()
-func FromBytes(b []byte) Parcel {
+func ParcelFromBytes(b []byte) Parcel {
 
 	content := append([]byte(nil), b...)
 
