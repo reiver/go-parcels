@@ -77,6 +77,9 @@ func TestParcelFromString(t *testing.T) {
 		{
 			String: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?",
 		},
+		{
+			String: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?",
+		},
 	}
 
 
