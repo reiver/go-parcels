@@ -18,12 +18,12 @@ type internalBytesParcel struct {
 //
 // Example
 //
-//      parcel := parcels.ParcelFromBytes( []byte{72, 69, 76, 76, 79} )
-//      
-//      asBytes  := parcel.Bytes()
-//      asReader := parcel.Reader()
-//      asRunes  := parcel.Runes()
-//      asString := parcel.String()
+//	parcel := parcels.ParcelFromBytes( []byte{72, 69, 76, 76, 79} )
+//	
+//	asBytes  := parcel.Bytes()
+//	asReader := parcel.Reader()
+//	asRunes  := parcel.Runes()
+//	asString := parcel.String()
 //	
 //	n, err := parcel.WriteTo(writer)
 func ParcelFromBytes(b []byte) Parcel {
