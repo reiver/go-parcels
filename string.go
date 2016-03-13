@@ -22,6 +22,8 @@ type internalStringParcel struct {
 //	asReader := parcel.Reader()
 //	asRunes  := parcel.Runes()
 //	asString := parcel.String()
+//	
+//	n, err := parcel.WriteTo(writer)
 func ParcelFromString(content string) Parcel {
 
 	parcel := internalStringParcel{

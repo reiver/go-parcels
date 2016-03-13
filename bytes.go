@@ -24,6 +24,8 @@ type internalBytesParcel struct {
 //      asReader := parcel.Reader()
 //      asRunes  := parcel.Runes()
 //      asString := parcel.String()
+//	
+//	n, err := parcel.WriteTo(writer)
 func ParcelFromBytes(b []byte) Parcel {
 
 	content := append([]byte(nil), b...)

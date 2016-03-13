@@ -25,6 +25,8 @@ asBytes  := parcel.Bytes()
 asReader := parcel.Reader()
 asRunes  := parcel.Runes()
 asString := parcel.String()
+
+n, err := parcel.WriteTo(writer)
 ```
 
 
@@ -42,6 +44,8 @@ asBytes  := parcel.Bytes()
 asReader := parcel.Reader()
 asRunes  := parcel.Runes()
 asString := parcel.String()
+
+n, err := parcel.WriteTo(writer)
 ```
 
 
