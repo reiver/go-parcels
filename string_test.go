@@ -2,6 +2,9 @@ package parcels
 
 
 import (
+	"github.com/reiver/go-oi/test"
+
+	"bytes"
 	"io/ioutil"
 	"strings"
 
@@ -65,6 +68,15 @@ func TestParcelFromString(t *testing.T) {
 		{
 			String: "ↀ ↁ ↂ Ↄ ↄ ↅ ↆ ↇ ↈ",
 		},
+
+
+
+		{
+			String: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.",
+		},
+		{
+			String: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_. !@#$%^&*()_+-={}[]|:;<>/?",
+		},
 	}
 
 
@@ -93,11 +105,43 @@ func TestParcelFromString(t *testing.T) {
 
 		actualReaderBytes, err := ioutil.ReadAll(parcel.Reader())
 		if nil != err {
-			t.Errorf("For test #%d, did not expect an error, but actually got one: %v", testNumber, err)
+			t.Errorf("For test #%d, did not expect an error, but actually got one: %v; for %q.", testNumber, err, test.String)
 			continue
 		}
 		if expected, actual := test.String, string(actualReaderBytes); expected != actual {
 			t.Errorf("For test #%d, expected %q, but actually got %q.", testNumber, expected, actual)
+			continue
+		}
+
+
+		var buffer bytes.Buffer
+		n, err := parcel.WriteTo(&buffer)
+		if nil != err {
+			t.Errorf("For test #%d, did not expect an error, but actually got one: %v; for %q.", testNumber, err, test.String)
+			continue
+		}
+		if expected, actual := int64(len([]byte(test.String))), n; expected != actual {
+			t.Errorf("For test #%d, expected %d, but actually got %d; for %q.", testNumber, expected, actual, test.String)
+			continue
+		}
+		if expected, actual := test.String, buffer.String(); expected != actual {
+			t.Errorf("For test #%d, expected %q, but actually got %q", testNumber, expected, actual)
+			continue
+		}
+
+
+		var writer oitest.ShortWriter
+		n, err = parcel.WriteTo(&writer)
+		if nil != err {
+			t.Errorf("For test #%d, did not expect an error, but actually got one: %v; for %q.", testNumber, err, test.String)
+			continue
+		}
+		if expected, actual := int64(len([]byte(test.String))), n; expected != actual {
+			t.Errorf("For test #%d, expected %d, but actually got %d; for %q.", testNumber, expected, actual, test.String)
+			continue
+		}
+		if expected, actual := test.String, writer.String(); expected != actual {
+			t.Errorf("For test #%d, expected %q, but actually got %q", testNumber, expected, actual)
 			continue
 		}
 	}

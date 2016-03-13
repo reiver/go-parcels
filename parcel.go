@@ -11,6 +11,7 @@ type Parcel interface {
 	Reader() io.Reader
 	Runes() []rune
 	String() string
+	WriteTo(w io.Writer) (int64, error)
 
 	Then(func(Parcel)Parcel) Parcel
 }
